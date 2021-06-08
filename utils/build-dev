@@ -1,0 +1,30 @@
+#!/bin/bash
+
+thisdir=$(dirname $(readlink -f $0))
+
+set -eo pipefail
+
+eval $(cat $thisdir/development.env.vars 2>/dev/null)
+
+# Prompt for new env vars like so:
+# read new_var
+# if [ -z "$new_var" ]
+# then
+#     MY_VAR="$MY_VAR"
+# else
+#     MY_VAR="$new_var"
+# fi
+# echo "export MY_VAR='${MY_VAR}'" > $thisdir/development.env.vars
+# echo "MY_VAR = $MY_VAR"
+
+set -u
+
+cd $thisdir"/.."
+mkdir -p dev dev-previous
+mv -f dev/* dev-previous/ 2>/dev/null || :
+
+# Add MY_VAR="${MY_VAR}" etc to the beginning of this line:
+NODE_ENV=development yarn run build-dev
+
+du -skh dev
+tree -sh dev -I assets
