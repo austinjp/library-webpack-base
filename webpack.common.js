@@ -4,8 +4,32 @@ const webpack = require("webpack")
 const hashDigestLength = 20
 const hashFunction = 'sha512'
 
+const name = "myLibrary"
+const entryPoint = "./src/index.js"
+const entries = {
+  dev:  {
+    filename: "index.js",
+    import: entryPoint,
+    library: {
+      name: name,
+      type: "umd"
+    }
+  },
+  dist: {
+    filename: "index.js",
+    import: entryPoint,
+    library: {
+      name: name,
+    }
+  }
+}
+
 module.exports = {
-  entry: "./src/index.js",
+  externals: {
+    preact: "preact",
+    react: "react",
+  },
+  entry: entries,
   module: {
     rules: [{
       exclude: /node_modules/,
@@ -34,7 +58,8 @@ module.exports = {
             // as a dependency (not a dev dependency).
             [ '@babel/plugin-transform-runtime' ],
 
-            // JSX/Reacty stuff:
+            // JSX/Reacty stuff. You can remove this if
+            // you're not using JSX or React or similar.
             [ '@babel/plugin-syntax-jsx' ],
             [ '@babel/plugin-transform-react-jsx' ],
             [ '@babel/plugin-transform-react-jsx-development' ],
@@ -44,12 +69,8 @@ module.exports = {
     }],
   },
   output: {
-    filename: 'index.js',
-    chunkFilename: 'index.js',
-    library:{
-      name: 'myLibrary',
-      type: 'umd',
-    },
+    // filename: 'index.js',
+    // chunkFilename: 'index.js',
     hashDigestLength: hashDigestLength,
     hashFunction: hashFunction,
     libraryExport: 'default',

@@ -3,9 +3,11 @@ const path = require("path")
 const common = require('./webpack.common.js');
 const webpack = require('webpack');
 
+delete common.entry.dist
+
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'eval-source-map',
+  devtool: false,
   // devServer: {
   //   clientLogLevel: 'info',
   //   contentBase: './dist-dev/',

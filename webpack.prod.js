@@ -4,6 +4,29 @@ const path = require('path')
 const webpack = require('webpack')
 const terser = require("terser-webpack-plugin")
 
+delete common.entry.dev
+
+if ( (common.entry.dist) && (! common.entry.dist.library.type)) {
+  const newDist = {};
+  ["commonjs","commonjs2","commonjs-module","amd","umd","umd2","var","window"].forEach( (t) => {
+    let newFilename = t + ".js"
+    newDist[t] = {}
+    newDist[t] = Object.assign(
+      {},
+      common.entry.dist,
+      {
+        filename: newFilename,
+        library: Object.assign(
+          {},
+          common.entry.dist.library,
+          { type: t }
+        )
+      }
+    )
+  })
+  common.entry = newDist
+}
+
 module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
@@ -44,6 +67,7 @@ module.exports = merge(common, {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    // filename: (() => { console.log("\n\n" + String(common.filename) + "\n\n"); return common.filename })(),
   },
   plugins: [
     new webpack.DefinePlugin({

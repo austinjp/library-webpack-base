@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+
+    <!-- Disable 300ms delay in Chrome and Firefox -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Disable 300ms delay in IE -->
+    <style>html{touch-action:manipulation;-ms-touch-action:manipulation}</style>
+
+    <script src="http://localhost:3000/window.js"></script>
+
+    <!--
+        These should all work in the browser:
+        <script src="http://localhost:8081/index.js"></script>
+        <script src="http://localhost:3000/umd.js"></script>
+        <script src="http://localhost:3000/umd2.js"></script>
+        <script src="http://localhost:3000/window.js"></script>
+    -->
+
+    <!--
+        Meh, this gives a CORS error
+        <script type="module" src="http://localhost:3000/commonjs-module.js"></script>
+    -->
+
+    <!--
+        Unsure about these:
+        <script src="http://localhost:3000/commonjs.js"></script>
+        <script src="http://localhost:3000/commonjs2.js"></script>
+    -->
+
+    <!--
+        This will fail in a browser:
+        <script src="http://localhost:3000/amd.js"></script>
+    -->
+        
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    let e = document.getElementById("root");
+    e.innerText = myLibrary.myExports.test.ok();
+  </script>
+</html>

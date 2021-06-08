@@ -4,13 +4,14 @@
   "description": "For authoring libraries.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "    webpack            --config webpack.prod.js --mode production  --env production  --progress --color",
-    "build-dev": "webpack            --config webpack.dev.js  --mode development --env development --progress --color",
-    "gzip": "  find dist -type f -regex '.*\\(html\\|js\\|map\\|css\\)$' -exec gzip   -fk9 {} \\;",
-    "brotli": "find dist -type f -regex '.*\\(html\\|js\\|map\\|css\\)$' -exec brotli -fk9 {} \\;",
-    "serve": "yarn serve-dev",
-    "serve-dev": "./node_modules/node-static/bin/cli.js -a 0.0.0.0 --spa -p 8000 ./dist"
+    "test": "      echo \"Error: no test specified\" && exit 1",
+    "build": "     webpack            --config webpack.prod.js --mode production  --env production  --progress --color",
+    "build-dev": " webpack            --config webpack.dev.js  --mode development --env development --progress --color",
+    "gzip": "      find dist -type f -regex '.*\\(html\\|js\\|map\\|css\\)$' -exec gzip   -fk9 {} \\;",
+    "brotli": "    find dist -type f -regex '.*\\(html\\|js\\|map\\|css\\)$' -exec brotli -fk9 {} \\;",
+    "serve": "     node_modules/node-static/bin/cli.js -a 0.0.0.0 --spa -p 3000 ./dist",
+    "serve-dev": " node_modules/node-static/bin/cli.js -a 0.0.0.0 --spa -p 8081 ./dev",
+    "serve-test": "node_modules/node-static/bin/cli.js -a 0.0.0.0 --spa -p 8080 ./test"
   },
   "repository": "git+ssh://git@github.com/austinjp/library-webpack-base.git",
   "author": "austinjp",
