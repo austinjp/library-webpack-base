@@ -9,30 +9,36 @@
     <!-- Disable 300ms delay in IE -->
     <style>html{touch-action:manipulation;-ms-touch-action:manipulation}</style>
 
-    <script src="http://localhost:3000/window.js"></script>
+    <!-- 
+    Uncomment these if you want to try with React:
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    -->
+
+    <script src="//localhost:8081/index.js"></script>
 
     <!--
-        These should all work in the browser:
-        <script src="http://localhost:8081/index.js"></script>
-        <script src="http://localhost:3000/umd.js"></script>
-        <script src="http://localhost:3000/umd2.js"></script>
-        <script src="http://localhost:3000/window.js"></script>
+    These should all work in the browser:
+    <script src="//localhost:8081/index.js"></script>
+    <script src="//localhost:3000/umd.js"></script>
+    <script src="//localhost:3000/umd2.js"></script>
+    <script src="//localhost:3000/window.js"></script>
     -->
 
     <!--
-        Meh, this gives a CORS error
-        <script type="module" src="http://localhost:3000/commonjs-module.js"></script>
+    Meh, this gives a CORS error.. will fix another time. Maybe :)
+    <script type="module" src="//localhost:3000/commonjs-module.js"></script>
     -->
 
     <!--
-        Unsure about these:
-        <script src="http://localhost:3000/commonjs.js"></script>
-        <script src="http://localhost:3000/commonjs2.js"></script>
+    Not working at the moment:
+    <script src="//localhost:3000/commonjs.js"></script>
+    <script src="//localhost:3000/commonjs2.js"></script>
     -->
 
     <!--
-        This will fail in a browser:
-        <script src="http://localhost:3000/amd.js"></script>
+    This will fail in a browser:
+    <script src="//localhost:3000/amd.js"></script>
     -->
         
   </head>
@@ -42,6 +48,14 @@
   </body>
   <script>
     let e = document.getElementById("root");
-    e.innerText = myLibrary.myExports.test.ok();
+
+    // Plain-text test:
+    e.innerText = myLibrary.myExports.test.ok;
+
+    // JSX/React test:
+    // ReactDOM.render(
+    //   myLibrary.myExports.test.jsx(),
+    //   e
+    // );
   </script>
 </html>
