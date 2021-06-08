@@ -1,16 +1,12 @@
-const ok = () => {
-  return "OK!"
-}
-
-const reactComponent = () => {
+const jsx = () => {
   return (
     <span>OK!</span>
   )
 }
 
 const test = {
-  ok: ok,
-  reactComponent: reactComponent
+  ok: "OK!",
+  jsx: jsx
 }
 
 export default test
