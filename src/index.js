@@ -1,4 +1,8 @@
-import { whatever } from "./lib"
+import { test } from "./lib"
 
-export default whatever
-export { whatever }
+// Need to export stuff or your build will be empty :)
+const myExports = {
+  test: test
+}
+export default myExports
+export { myExports }

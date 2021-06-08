@@ -1,17 +1,17 @@
-const plainString = () => {
-  return "Hi!"
+const ok = () => {
+  return "OK!"
 }
 
 const reactComponent = () => {
   return (
-    <span>Hi!</span>
+    <span>OK!</span>
   )
 }
 
-const whatever = {
-  plainString: plainString,
+const test = {
+  ok: ok,
   reactComponent: reactComponent
 }
 
-export default whatever
-export { whatever }
+export default test
+export { test }
